@@ -55,11 +55,11 @@ for _, job := range jobs {
 p.Wait()
 ```
 
-This works *nearly* identical to the prior example, but the number of simultaneous goroutines spawned is limited to `5` instead of being infinite.
+This works *nearly* identically to the prior example, but the number of simultaneous goroutines spawned is limited to `5` instead of being infinite. If there are millions of jobs, they will be executed only 5 at a time, slowing down the runtime of *this* code but keeping resources available for other parts of the application.
 
 ## Priority vs magic numbers
 
-The pattern of creating worker pools with a hard-coded maximum (such as `pool.New(5)`) is not ideal, as it doesn't scale with the amount of available resources.
+The pattern of creating worker pools with a hard-coded maximum (such as `pool.New(5)`) is not usually ideal, as it doesn't scale with the amount of available resources.
 
 Because of this, there are a few built-in functions that are preferred:
 
